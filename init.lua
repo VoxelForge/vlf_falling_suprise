@@ -1,21 +1,11 @@
-minetest.register_abm({
-    label = "falling_tnt",
-    nodenames = {"air"},
-    interval = 1,
-    chance = 100000,
-    action = function(pos, node)
-        minetest.add_entity(pos, "vlf_tnt:tnt")
-        minetest.check_single_for_falling(pos)
-    end
-})
+local modpath = minetest.get_modpath("vlf_falling_suprise")
+minetest.register_on_joinplayer(function(player)
+	local player_name = player:get_player_name()
+	if minetest.settings:get_bool("vlf_falling_destroy", false) then
+	local message = minetest.colorize("#FFFFFF", "<VoxelForge> Please Ensure that you're not using this in an old world. This will destroy it. If you are willing to accept that  this will destroy your world then you may type   -- /start true --")
+	error("<VoxelForge> Please Ensure that you're not using this in an old world. This will destroy it. If you are willing to accept that  this will destroy your world then you may type   please go to your settings and set it to true.")
+	minetest.chat_send_player(player_name, message)
+	end
+end)
 
-minetest.register_abm({
-    label = "falling_anvils",
-    nodenames = {"air"},
-    interval = 1,
-    chance = 100000,
-    action = function(pos, node)
-        minetest.set_node(pos, {name="vlf_anvils:anvil"})
-        minetest.check_single_for_falling(pos)
-    end
-})
+dofile(modpath.."/suprise.lua")
