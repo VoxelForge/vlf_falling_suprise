@@ -1,2 +1,2 @@
 # Falling Suprises!
-vlf_falling_destroy (Initialize the vlf_falling_suprise mod) bool false
+vlf_falling_destroy (Initialize the vlf_falling_suprise mod) bool true
